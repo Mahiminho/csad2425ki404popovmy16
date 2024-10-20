@@ -18,6 +18,8 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Xml)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Xml)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Test REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -88,4 +90,25 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Connection-Tester)
 endif()
 
-add_subdirectory(UT-tests)
+# add_subdirectory(UT-tests)
+
+set(TEST_TARGET UT-tests)
+
+# Add test sources
+add_executable(${TEST_TARGET}
+    UT-tests/UT-connection-tester.cpp
+)
+
+target_sources(${TEST_TARGET} PRIVATE
+    mainwindow.cpp
+    mainwindow.h
+)
+
+# Link the Qt5::Test library to the test executable
+target_link_libraries(${TEST_TARGET} PUBLIC Qt5::Test Qt5::Core Qt5::Widgets Qt5::SerialPort Qt5::Xml)
+
+# Enable testing
+enable_testing()
+
+# Define a test
+add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
