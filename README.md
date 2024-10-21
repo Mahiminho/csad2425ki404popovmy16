@@ -6,7 +6,7 @@ This repository contains a project for a hardware-based Rock Paper Scissors game
 ## Task 1
 Main goals to this task is to create repository with main branch **develop**. Then create branch with name **feature/develop/task1** and create `README.md` file with all descriptions. Also create **TAG** and make pull request.
 
- ## Student details
+## Student details
 | Student number | Game | config format |
 | :-----------: | :-------------: | :-----------: |
 | 16 | rock paper scissors | XML |
@@ -24,3 +24,20 @@ Main goals to this task is to create repository with main branch **develop**. Th
 - **C/C++**: Used in the Arduino environment to develop the Rock Paper Scissors game logic and in graphical interface.
 ### Communication
 - **Serial Communication**: The Arduino will communicate with the app through a UART serial port to send and receive game status and input data.
+
+## Task2
+Main goal: Create a simple communication schema SW(client) <-> UART <-> HW(server). The client should send a message to the server. The server should modify the message and send it back to the client.
+
+## Build client
+You need to install Qt Creator and CMake. Then you need to run next commands in cmd for example:
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+## Build server
+You need to install PlatformIO and use its GUI for build and run project, or run next command:
+```
+pio run
+```
