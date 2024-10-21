@@ -1,0 +1,70 @@
+name: CI Qt CMake (Windows) and PlatformIO
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Debug
+
+jobs:
+  client-build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Qt
+      # Installs the Qt SDK
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.15.2'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+
+    - name: Configure CMake
+      run: cmake ${{github.workspace}}/RPS-client -B ${{github.workspace}}/RPS-client/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build client
+      # Build your program with the given configuration
+      run: cmake --build ${{github.workspace}}/RPS-client/build
+
+    - name: Upload Client build artifact
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: RPS-client-build-windows
+        path: ${{github.workspace}}/RPS-client/build
+
+    - name: Test
+      working-directory: ${{github.workspace}}/RPS-client/build
+      # Execute tests defined by the CMake configuration.
+      run: ctest -C ${{env.BUILD_TYPE}}
+
+  # Job for building the PlatformIO server project
+  server-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PlatformIO
+        run: |
+          python3 -m pip install -U platformio
+
+      - name: Build PlatformIO project
+        run: pio run
+        working-directory: RPS-server
+
+      - name: Upload Server build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-build
+          path: RPS-server/.pio/build/*
