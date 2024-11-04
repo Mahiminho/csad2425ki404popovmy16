@@ -41,3 +41,12 @@ You need to install PlatformIO and use its GUI for build and run project, or run
 ```
 pio run
 ```
+
+## Task3
+Main goal: Create game. The client should send a message with game data to the server. The server should process the message and send back message with result to the client. Client should show result of the current game.
+
+## Build application
+For building application you just need to run script for building all project, but before that connect ESP to your device. In root of project open CMD and enter next command:
+```
+buildAll
+```
