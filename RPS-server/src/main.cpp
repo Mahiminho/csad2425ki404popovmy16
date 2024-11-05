@@ -1,9 +1,17 @@
 #include <Arduino.h>
+#include <vector>
+#include <algorithm>
+#include <map>
 #include "../.pio/libdeps/d1_wroom_02/tinyxml2/tinyxml2.h"
 
 using namespace tinyxml2;
 
+// get result of game
 String chooseWinner(String p1, String p2);
+// array with most popular opponent choices (last 6 games)
+std::vector<String> aiMemory = { "1", "2", "3", "1", "2", "3" }; //, "1", "2", "3" };
+// function for AI choice based on its memory
+String smartChoiceAI(const std::vector<String>& vec);
 
 void setup() {
   Serial.begin(9600);
@@ -43,9 +51,14 @@ void loop() {
 
     // process
     if (modeVal == "1") {
-      String ai1Choice = String(random(1, 4));
+      // smart choice by AI
+      String ai1Choice = smartChoiceAI(aiMemory);
 
       String winner = chooseWinner(p1Val, ai1Choice);
+
+      // update AI memory after game
+      aiMemory.pop_back();
+      aiMemory.insert(aiMemory.begin(), p1Val);
 
       ai1->SetText(ai1Choice.c_str());
       win->SetText(winner.c_str());
@@ -65,16 +78,16 @@ void loop() {
       win->SetText(winner.c_str());
     } 
     else if (modeVal == "4") {
+      // random choice by AI1
       String ai1Choice = String(random(1, 4));
-      String ai2Choice = "";
-      if (ai1Choice == "1")
-        ai2Choice = "2";
-      else if (ai1Choice == "2")
-        ai2Choice = "3";
-      else if (ai1Choice == "3")
-        ai2Choice = "1";
+      // smart choice by AI2
+      String ai2Choice = smartChoiceAI(aiMemory);
 
       String winner = chooseWinner(ai1Choice, ai2Choice);
+
+      // update AI memory after game
+      aiMemory.pop_back();
+      aiMemory.insert(aiMemory.begin(), p1Val);
 
       ai1->SetText(ai1Choice.c_str());
       ai2->SetText(ai2Choice.c_str());
@@ -104,4 +117,20 @@ String chooseWinner(String p1, String p2) {
     return "1";
   }
   return "5";
+}
+
+String smartChoiceAI(const std::vector<String>& vec) {
+  std::map<String, int> frequency;
+  for (String val : vec)
+    frequency[val]++;
+  
+  String mostPopularChoice = std::max_element(frequency.begin(), frequency.end(),
+    [](const auto& a, const auto& b) { return a.second < b.second; })->first;
+
+  if (mostPopularChoice == "1")
+    return "2";
+  else if (mostPopularChoice == "2")
+    return "3";
+  else
+    return "1";
 }
