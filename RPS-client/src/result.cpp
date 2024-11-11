@@ -44,9 +44,6 @@ Result::Result(QWidget *parent)
     connect(cho, &Choice::sigPassCho1, this, &Result::setChoice1);
     connect(cho, &Choice::sigPassCho2, this, &Result::setChoice2);
 
-    // connect(cho, &Choice::sigCloseCho1, this, &Result::show);
-    // connect(cho, &Choice::sigCloseCho2, this, &Result::show);
-
     connect(this, &Result::sigShowGameMode, cho, &Choice::showGameMode);
 }
 
@@ -78,26 +75,19 @@ void Result::on_buttonNext_clicked()
     gameMode_local = readFromFile("gameMode.txt");
     if (gameMode_local == "1")
     {
-        //QMessageBox::information(this, "Info", "Man Vs AI");
-        //emit sigResToChoice();
         emit sigShowGameMode(gameMode_local.toInt());
     }
     else if (gameMode_local == "2")
     {
-        //QMessageBox::information(this, "Info", "Man Vs Man");
         emit sigShowGameMode(gameMode_local.toInt());
-        //emit sigResToChoice();
-        //emit sigResToChoice();
     }
     else if (gameMode_local == "3")
     {
-        //QMessageBox::information(this, "Info", "Random Move");
         setXmlMessage(xmlFilePath, gameMode_local, "0", "0");
         sendXmlToESP(xmlFilePath);
     }
     else if (gameMode_local == "4")
     {
-        //QMessageBox::information(this, "Info", "Win Strategy");
         setXmlMessage(xmlFilePath, gameMode_local, "0", "0");
         sendXmlToESP(xmlFilePath);
     }
@@ -292,7 +282,6 @@ void Result::receiveDataFromESP() {
     }
 }
 
-// get message from xml file
 void Result::getXmlMessage() {
     // open xml files
     QFile file(xmlFilePath);

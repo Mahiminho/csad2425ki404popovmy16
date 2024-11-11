@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['score_5flocal_0',['score_local',['../class_result.html#ac2971abab4455a4d560ee2561d1526ea',1,'Result']]],
+  ['sendxmltoesp_1',['sendXmlToESP',['../class_result.html#a765b241d2994a5316641ec14c09605bd',1,'Result']]],
+  ['serialport_2',['serialPort',['../class_result.html#adb7181482347dae371517481a9d34eaa',1,'Result']]],
+  ['setchoice1_3',['setChoice1',['../class_result.html#a58a191889fa12da05d5e3185d19ee78b',1,'Result']]],
+  ['setchoice2_4',['setChoice2',['../class_result.html#a62ef7ee48ff7c52ec53ad42d776ffe12',1,'Result']]],
+  ['setscore_5',['setScore',['../class_result.html#ae93300cea158f68bbad24fc56c59d19b',1,'Result']]],
+  ['setup_6',['setup',['../_r_p_s-server_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]],
+  ['setxmlmessage_7',['setXmlMessage',['../class_result.html#a1f5da3758bf2b18f84b08f2cb7a57587',1,'Result']]],
+  ['showgamemode_8',['showGameMode',['../class_choice.html#a2fd7fba22f47e4730232f9476d2f51af',1,'Choice']]],
+  ['sigact_9',['sigAct',['../class_actions.html#ad315f85457441dde14e771692ecbbdb3',1,'Actions']]],
+  ['sigcho_10',['sigCho',['../class_choice.html#ae029125345b81d8f06a88b51ddfc4932',1,'Choice']]],
+  ['sigclosecho1_11',['sigCloseCho1',['../class_choice.html#a37aa909dd27d503b1a8d3822a1d2bec0',1,'Choice']]],
+  ['sigclosecho2_12',['sigCloseCho2',['../class_choice.html#af72cba4b386b22dc70d7298bf55c373a',1,'Choice']]],
+  ['sigpasscho1_13',['sigPassCho1',['../class_choice.html#a6eee999325c8a3cb842d4f33fabe9667',1,'Choice']]],
+  ['sigpasscho2_14',['sigPassCho2',['../class_choice.html#a7f47f72b0bbdffbc5c81bcaeef23ca25',1,'Choice']]],
+  ['sigres_15',['sigRes',['../class_result.html#a0bcffff37c4e969df4c171081e5013e2',1,'Result']]],
+  ['sigrestochoice_16',['sigResToChoice',['../class_result.html#a5a14edfbd27e5bdb8ec8e86a44e90903',1,'Result']]],
+  ['sigsetscore_17',['sigSetScore',['../class_actions.html#a47b8ff369f4820fb752d1225a5f7c604',1,'Actions']]],
+  ['sigshowgamemode_18',['sigShowGameMode',['../class_result.html#a6dc5614fb18b1777c4f8b8cd97dbeacb',1,'Result']]],
+  ['smartchoiceai_19',['SmartChoiceAI',['../_r_p_s-server_2src_2main_8cpp.html#a46628a51258a8db75d0f7acbc798c9b5',1,'main.cpp']]],
+  ['softmax_20',['SoftMax',['../_r_p_s-server_2src_2main_8cpp.html#a8203e9cf89cf9b8ad1137364986bfa9b',1,'main.cpp']]]
+];

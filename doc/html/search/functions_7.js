@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['sendxmltoesp_0',['sendXmlToESP',['../class_result.html#a765b241d2994a5316641ec14c09605bd',1,'Result']]],
+  ['setchoice1_1',['setChoice1',['../class_result.html#a58a191889fa12da05d5e3185d19ee78b',1,'Result']]],
+  ['setchoice2_2',['setChoice2',['../class_result.html#a62ef7ee48ff7c52ec53ad42d776ffe12',1,'Result']]],
+  ['setscore_3',['setScore',['../class_result.html#ae93300cea158f68bbad24fc56c59d19b',1,'Result']]],
+  ['setup_4',['setup',['../_r_p_s-server_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]],
+  ['setxmlmessage_5',['setXmlMessage',['../class_result.html#a1f5da3758bf2b18f84b08f2cb7a57587',1,'Result']]],
+  ['showgamemode_6',['showGameMode',['../class_choice.html#a2fd7fba22f47e4730232f9476d2f51af',1,'Choice']]],
+  ['sigact_7',['sigAct',['../class_actions.html#ad315f85457441dde14e771692ecbbdb3',1,'Actions']]],
+  ['sigcho_8',['sigCho',['../class_choice.html#ae029125345b81d8f06a88b51ddfc4932',1,'Choice']]],
+  ['sigclosecho1_9',['sigCloseCho1',['../class_choice.html#a37aa909dd27d503b1a8d3822a1d2bec0',1,'Choice']]],
+  ['sigclosecho2_10',['sigCloseCho2',['../class_choice.html#af72cba4b386b22dc70d7298bf55c373a',1,'Choice']]],
+  ['sigpasscho1_11',['sigPassCho1',['../class_choice.html#a6eee999325c8a3cb842d4f33fabe9667',1,'Choice']]],
+  ['sigpasscho2_12',['sigPassCho2',['../class_choice.html#a7f47f72b0bbdffbc5c81bcaeef23ca25',1,'Choice']]],
+  ['sigres_13',['sigRes',['../class_result.html#a0bcffff37c4e969df4c171081e5013e2',1,'Result']]],
+  ['sigrestochoice_14',['sigResToChoice',['../class_result.html#a5a14edfbd27e5bdb8ec8e86a44e90903',1,'Result']]],
+  ['sigsetscore_15',['sigSetScore',['../class_actions.html#a47b8ff369f4820fb752d1225a5f7c604',1,'Actions']]],
+  ['sigshowgamemode_16',['sigShowGameMode',['../class_result.html#a6dc5614fb18b1777c4f8b8cd97dbeacb',1,'Result']]],
+  ['smartchoiceai_17',['SmartChoiceAI',['../_r_p_s-server_2src_2main_8cpp.html#a46628a51258a8db75d0f7acbc798c9b5',1,'main.cpp']]],
+  ['softmax_18',['SoftMax',['../_r_p_s-server_2src_2main_8cpp.html#a8203e9cf89cf9b8ad1137364986bfa9b',1,'main.cpp']]]
+];
