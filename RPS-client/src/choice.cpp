@@ -7,8 +7,6 @@ Choice::Choice(QWidget *parent)
     , ui(new Ui::Choice)
 {
     ui->setupUi(this);
-
-    //ui->radioPaper->setChecked(true);
 }
 
 Choice::~Choice()
@@ -28,7 +26,6 @@ void Choice::on_buttonNext_clicked()
     choiceP1 = choice;
     emit sigPassCho1();
 
-    //this->close();
     emit sigCloseCho1();
 
     ui->radioRock->setAutoExclusive(false);

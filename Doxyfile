@@ -1,0 +1,98 @@
+# Doxyfile 1.9.2
+
+#--------------------------------------------------------------------------- 
+# Project related configuration options
+#---------------------------------------------------------------------------
+
+# The PROJECT_NAME tag is used to set the title of the documentation.
+PROJECT_NAME           = "Client-Server game: Rock-Paper-Scissors"
+PROJECT_BRIEF          = ""
+PROJECT_LOGO           = ""
+
+# The OUTPUT_DIRECTORY tag is used to specify the directory where the documentation will be generated.
+OUTPUT_DIRECTORY       = ./doc
+
+#--------------------------------------------------------------------------- 
+# Input files and directories
+#---------------------------------------------------------------------------
+
+# INPUT specifies the files and directories to process.
+# Set it to the directories where your header and source files are located.
+INPUT                  = ./RPS-client/inc ./RPS-client/src ./RPS-server/src
+
+# This option can be used to exclude files and directories.
+# You can specify directories or files you want to exclude.
+EXCLUDE                = 
+
+#--------------------------------------------------------------------------- 
+# Build configuration options
+#---------------------------------------------------------------------------
+
+# If you set this option to YES, Doxygen will generate a makefile to build the documentation.
+# This can be useful if you're planning to build the documentation locally.
+GENERATE_LATEX         = NO
+
+# The EXTRACT_ALL tag determines whether Doxygen will extract documentation
+# from all entities (e.g., classes, functions, etc.) or just those that are
+# explicitly documented.
+EXTRACT_ALL            = YES
+
+#--------------------------------------------------------------------------- 
+# Output format and styles
+#---------------------------------------------------------------------------
+
+# This tag specifies the format of the generated documentation.
+# You can choose html, latex, rtf, or man (and others). We'll use HTML here.
+GENERATE_HTML          = YES
+
+# This tag specifies whether Doxygen should generate a tree of classes.
+# If you set this to YES, a tree will be generated in the documentation.
+GENERATE_TREEVIEW      = YES
+
+#--------------------------------------------------------------------------- 
+# Documenting source code
+#---------------------------------------------------------------------------
+
+# This option controls whether to include documentation for private members of classes.
+# If set to YES, private members will be included in the documentation.
+INLINE_INHERITED_MEMB  = NO
+
+# This option controls the format of the documentation for functions.
+# It can be set to YES to include function signature in the documentation.
+SHOW_INCLUDE_FILES     = YES
+
+#--------------------------------------------------------------------------- 
+# Qt-specific options
+#---------------------------------------------------------------------------
+
+# If you're using Qt, you can enable specific configurations for Qt projects.
+QT_AUTOMOC             = YES  # Enable Qt's automatic MOC (Meta-Object Compiler) integration
+
+# This option allows you to extract signals and slots from Qt projects.
+EXTRACT_PRIVATE        = YES
+EXTRACT_PACKAGE        = YES
+
+#--------------------------------------------------------------------------- 
+# Miscellaneous configuration options
+#---------------------------------------------------------------------------
+
+# The FILE_PATTERNS tag can be used to specify which file extensions Doxygen will process.
+FILE_PATTERNS          = *.h *.cpp
+
+# This option controls whether Doxygen will sort members in alphabetical order.
+SORT_MEMBERS           = YES
+
+#--------------------------------------------------------------------------- 
+# Advanced configuration options
+#---------------------------------------------------------------------------
+
+# This option allows you to add extra comments to the documentation.
+# These comments will be inserted into the final output.
+EXTRA_FILES            = 
+
+#--------------------------------------------------------------------------- 
+# Optional additional settings
+#---------------------------------------------------------------------------
+
+# If you want to use a custom header for the documentation, you can set the header here.
+# CUSTOM_HEADER         = custom_header.html
