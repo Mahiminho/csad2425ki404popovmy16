@@ -50,3 +50,12 @@ For building application you just need to run script for building all project, b
 ```
 buildAll
 ```
+
+## Task4
+Main goal: Create documentation. Add special commentaries for automatic generation documentation using doxygen.
+
+## Generate documentation
+For generating documentation, install doxygen, set path to "[Your path]/doxygen/bin" in environment variables and in root of project open CMD and enter next command:
+```
+doxygen
+```
