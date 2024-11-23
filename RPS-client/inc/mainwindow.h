@@ -42,7 +42,7 @@ public:
      */
     void writeToFile(const QString &fileName, const QString &data);
 
-private slots:
+public slots:
     /**
      * @brief Slot that handles the "Man vs AI" button click event, initiating a game mode where a human plays against an AI.
      */

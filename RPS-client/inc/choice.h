@@ -59,7 +59,7 @@ signals:
      */
     void sigCloseCho2();
 
-private slots:
+public slots:
     /**
      * @brief Slot that handles the "Next" button click event for advancing the choice selection process.
      */
@@ -77,7 +77,7 @@ public slots:
      */
     void showGameMode(int gameMode);
 
-private:
+public:
     Ui::Choice *ui; ///< Pointer to the UI elements of the Choice class.
 };
 

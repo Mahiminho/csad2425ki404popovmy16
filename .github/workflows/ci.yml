@@ -42,10 +42,10 @@ jobs:
         name: RPS-client-build-windows
         path: ${{github.workspace}}/RPS-client/build
 
-    - name: Test
-      working-directory: ${{github.workspace}}/RPS-client/build
+    - name: Run tests
+      working-directory: ${{github.workspace}}/RPS-client/UT-tests
       # Execute tests defined by the CMake configuration.
-      run: ctest -C ${{env.BUILD_TYPE}}
+      run: ./runTests.bat
 
   # Job for building the PlatformIO server project
   server-build:
