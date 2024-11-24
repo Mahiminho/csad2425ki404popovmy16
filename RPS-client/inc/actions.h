@@ -42,7 +42,7 @@ public:
      */
     void writeToFile(const QString &fileName, const QString &data);
 
-private:
+public:
     Ui::Actions *ui; ///< Pointer to the UI elements of the Actions class.
     Result *res; ///< Pointer to the Result object used in this class for managing results.
 
@@ -57,7 +57,7 @@ signals:
      */
     void sigSetScore();
 
-private slots:
+public slots:
     /**
      * @brief Slot that handles the "Back" button click event.
      */

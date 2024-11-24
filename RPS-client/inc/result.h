@@ -98,7 +98,7 @@ public:
      */
     void setChoice2();
 
-private:
+public:
     Ui::Result *ui; ///< Pointer to the UI elements of the Result class.
 
 signals:
@@ -118,7 +118,7 @@ signals:
      */
     void sigShowGameMode(int gameMode);
 
-private slots:
+public slots:
     /**
      * @brief Slot that handles the "Back" button click event.
      */

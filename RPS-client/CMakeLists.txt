@@ -21,10 +21,14 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Test REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test REQUIRED)
 
 set(PROJECT_SOURCES
-        src/main.cpp
-        src/mainwindow.cpp
-        inc/mainwindow.h
-        forms/mainwindow.ui
+    src/main.cpp
+    src/mainwindow.cpp
+    inc/mainwindow.h
+    forms/mainwindow.ui
+    inc/actions.h src/actions.cpp forms/actions.ui
+    inc/choice.h src/choice.cpp forms/choice.ui
+    inc/result.h src/result.cpp forms/result.ui
+    img/imgs.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -32,24 +36,14 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET RPS-CLIENT APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
         add_library(RPS-CLIENT SHARED
             ${PROJECT_SOURCES}
         )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(RPS-CLIENT
             ${PROJECT_SOURCES}
-            inc/actions.h src/actions.cpp forms/actions.ui
-            inc/choice.h src/choice.cpp forms/choice.ui
-            img/imgs.qrc
-            inc/result.h src/result.cpp forms/result.ui
         )
     endif()
 endif()
@@ -58,9 +52,6 @@ target_link_libraries(RPS-CLIENT PUBLIC Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(RPS-CLIENT PUBLIC Qt${QT_VERSION_MAJOR}::SerialPort)
 target_link_libraries(RPS-CLIENT PUBLIC Qt${QT_VERSION_MAJOR}::Xml)
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.RPS-CLIENT)
 endif()
@@ -83,27 +74,57 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(RPS-CLIENT)
 endif()
 
+# # # Test target
+# set(TEST_TARGET UT-tests)
 
+# add_executable(${TEST_TARGET}
+#     UT-tests/test_actions.cpp
+#     UT-tests/test_choice.cpp
+#     UT-tests/test_mainwindow.cpp
+#     UT-tests/test_result.cpp
+# )
 
-set(TEST_TARGET UT-tests)
+# target_include_directories(${TEST_TARGET} PRIVATE
+#     ${CMAKE_SOURCE_DIR}/inc
+#     ${CMAKE_SOURCE_DIR}/UT-tests
+# )
 
-# Add test sources
-add_executable(${TEST_TARGET}
-    UT-tests/UT-app-tester.cpp
+# target_link_libraries(${TEST_TARGET} PUBLIC Qt${QT_VERSION_MAJOR}::Test Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialPort Qt${QT_VERSION_MAJOR}::Xml)
+
+# enable_testing()
+
+# add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
+
+# Test targets
+set(TEST_SOURCES
+    UT-tests/test_actions.cpp
+    UT-tests/test_choice.cpp
+    UT-tests/test_mainwindow.cpp
+    UT-tests/test_result.cpp
 )
 
-target_sources(${TEST_TARGET} PUBLIC
-    inc/actions.h src/actions.cpp forms/actions.ui
-    inc/choice.h src/choice.cpp forms/choice.ui
-    inc/result.h src/result.cpp forms/result.ui
-    inc/mainwindow.h src/mainwindow.cpp forms/mainwindow.ui
-)
+foreach(TEST_SOURCE ${TEST_SOURCES})
+    get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+    add_executable(${TEST_NAME} ${TEST_SOURCE}
+        src/actions.cpp
+        src/choice.cpp
+        src/mainwindow.cpp
+        src/result.cpp
+        inc/actions.h
+        inc/choice.h
+        inc/mainwindow.h
+        inc/result.h
+        forms/actions.ui
+        forms/choice.ui
+        forms/mainwindow.ui
+        forms/result.ui
+    )
+    target_include_directories(${TEST_NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/inc
+        ${CMAKE_SOURCE_DIR}/UT-tests
+    )
+    target_link_libraries(${TEST_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Test Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialPort Qt${QT_VERSION_MAJOR}::Xml)
+    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endforeach()
 
-# Link the Qt5::Test library to the test executable
-target_link_libraries(${TEST_TARGET} PUBLIC Qt5::Test Qt5::Core Qt5::Widgets Qt5::SerialPort Qt5::Xml)
-
-# Enable testing
 enable_testing()
-
-# Define a test
-add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
