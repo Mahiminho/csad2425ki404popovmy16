@@ -63,7 +63,7 @@ doxygen
 ## Task5
 Main goal: Create set of tests. Add test files for automatic testing project.
 
-## Generate documentation
+## Run tests
 For running all tests, build client part of project for testing, using special "build.bat" in "RPS-client". Open CMD in "RPS-client" folder and enter next command:
 ```
 build
