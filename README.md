@@ -59,3 +59,16 @@ For generating documentation, install doxygen, set path to "[Your path]/doxygen/
 ```
 doxygen
 ```
+
+## Task5
+Main goal: Create set of tests. Add test files for automatic testing project.
+
+## Generate documentation
+For running all tests, build client part of project for testing, using special "build.bat" in "RPS-client". Open CMD in "RPS-client" folder and enter next command:
+```
+build
+```
+After project building, open CMD again, but this time in "RPS-client/UT-tests", where you can find "runTets.bat" file. For runnig all existing unit tests, open CMD and enter next command:
+```
+runTests
+```
